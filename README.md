@@ -1,4 +1,4 @@
-# K8S Deployment of external tools
+# Third party tools on K8S (Developer only)
 This repo is meant to provide working steps to deploy daily required tools for developer that they easily spinup on local k8s instance and start working.
 
 ## Prerequisites
@@ -10,3 +10,7 @@ This repo is meant to provide working steps to deploy daily required tools for d
 -  **PostgreSQL** server available through loadbalancer
 -  **SonarQube** lts community version for quick code scanning
 -  more to follow...
+
+
+## Note
+These installations are meant for reference and developer only environment
