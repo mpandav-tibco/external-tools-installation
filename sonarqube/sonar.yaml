@@ -21,18 +21,24 @@ spec:
         app: sonarqube
     spec:
       containers:
-      - name: sonarqube
-        image:  mpandav/tib-sonarqube-community-lts
-        ports:
-        - containerPort: 9000
-        env:
-        - name: SONAR_JDBC_URL
-          value: jdbc:postgresql://postgresql-service.database.svc.cluster.local:5432/sonar
-        - name: SONAR_JDBC_USERNAME
-          value: sonar
-        - name: SONAR_JDBC_PASSWORD
-          value: sonar # Replace with your password
-
+        - name: sonarqube
+          image: mpandav/tib-sonarqube-community-lts
+          ports:
+            - containerPort: 9000
+          env:
+            - name: SONAR_JDBC_URL
+              value: jdbc:postgresql://postgresql-service.database.svc.cluster.local:5432/sonar
+            - name: SONAR_JDBC_USERNAME
+              value: sonar
+            - name: SONAR_JDBC_PASSWORD
+              value: sonar # Replace with your password
+          resources: # Add this section for resource limits
+            limits:
+              cpu: "1" # Example: Limit CPU to 1 core
+              memory: 512Mi # Example: Limit memory to 512 MB
+            requests:
+              cpu: "0.5" # Example: Request 0.5 cores
+              memory: 256Mi # Example: Request 256 MB 
 ---
 apiVersion: v1
 kind: Service
@@ -43,9 +49,9 @@ spec:
   selector:
     app: sonarqube
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 9000
+    - protocol: TCP
+      port: 80
+      targetPort: 9000
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -64,4 +70,4 @@ spec:
               service:
                 name: sonarqube-service
                 port:
-                  number: 80
+                  number: 9000
