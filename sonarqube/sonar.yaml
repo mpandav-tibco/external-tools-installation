@@ -35,7 +35,7 @@ spec:
           resources: # Add this section for resource limits
             limits:
               cpu: "1" # Example: Limit CPU to 1 core
-              memory: 512Mi # Example: Limit memory to 512 MB
+              memory: 2G # Example: Limit memory to 512 MB
             requests:
               cpu: "0.5" # Example: Request 0.5 cores
               memory: 256Mi # Example: Request 256 MB 
