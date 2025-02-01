@@ -65,4 +65,4 @@ metadata:
   namespace: database # Specify the namespace
 type: Opaque
 data:
-  password: cG9zdGdyZXM= # Replace with your base64 encoded password
+  password: cG9zdGdyZXM= # Replace with your base64 encoded password - postgres
